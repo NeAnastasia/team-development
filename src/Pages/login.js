@@ -8,7 +8,7 @@ function Login() {
     <Container>
       <Card className="mt-5">
         <Card.Header className="h3">Авторизация</Card.Header>
-        <Form onSubmit={onSubmit}>
+        <Form>
           <Card.Body>
             <Form.Group className="mb-3" controlId="Email-form">
               <Form.Label>Email</Form.Label>

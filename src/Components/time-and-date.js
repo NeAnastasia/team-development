@@ -1,6 +1,6 @@
 import { Row, Col} from "react-bootstrap";
 
-function TineAndDate() {
+function TimeAndDate() {
 
     return (
         <>
@@ -29,4 +29,4 @@ function TineAndDate() {
     );
 }
 
-export default TineAndDate;
+export default TimeAndDate;

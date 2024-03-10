@@ -4,12 +4,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import { instance } from "../Api/api";
+import { useNavigate } from "react-router-dom";
 
 function KeyModal() {
   const [show, setShow] = useState(false);
   const [close, setClose] = useState(false);
   const [number, setNumber] = useState("");
-
+  const navigate = useNavigate();
 
   const handleCloseApi = async (e) => {
     setShow(false);
@@ -19,6 +20,7 @@ function KeyModal() {
           "api/key/create",
           JSON.stringify({ number })
         );
+        navigate('/keys');
       } catch (err) {
         alert(err);
       }

@@ -1,5 +1,4 @@
-import { Button, Row, Col } from "react-bootstrap";
-import { useState, useEffect, useNavigate } from "react";
+import { Button } from "react-bootstrap";
 import { instance } from "../Api/api";
 
 function BtnDelete({number}) {

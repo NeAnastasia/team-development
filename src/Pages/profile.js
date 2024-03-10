@@ -7,13 +7,7 @@ import KeyModal from "../Components/key-modal";
 function Profile() {
 
   return (
-    <Container>
-        <KeyCard/>
-        <Link>
-            Cоздать ключ
-        </Link>
-        <KeyModal/>
-    </Container>
+
   );
 }
 

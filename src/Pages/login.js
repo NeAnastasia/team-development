@@ -12,13 +12,14 @@ function Login() {
     e.preventDefault();
     try {
       const response = await instance.post(
-        "auth/login",
+        "api/auth/login",
         JSON.stringify({ email, password })
       ); 
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', response.data.user);
       navigate('/');
     } catch (err) {
-      alert(e.response.data.message);
+      alert(err);
     }
   };
 

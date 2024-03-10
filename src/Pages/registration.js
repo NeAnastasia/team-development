@@ -11,11 +11,11 @@ function Registration() {
     e.preventDefault();
     try {
       const response = await instance.post(
-        "auth/register",
+        "api/auth/register",
         JSON.stringify({ username, email, password })
       );
     } catch (err) {
-      alert(e.response.data.message);
+      alert(err);
     }
   };
 

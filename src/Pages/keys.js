@@ -1,4 +1,4 @@
-import { Container, Alert } from "react-bootstrap";
+import { Container, Alert, Row } from "react-bootstrap";
 import KeyCard from "../Components/key-card";
 import { Link } from "react-router-dom";
 import KeyModal from "../Components/key-modal";
@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../Api/api";
 
 function Keys() {
-  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const handleGet = async () => {
     try {
-      const response = await instance.get("keys");
+      const response = await instance.get("api/keys");
       setData(response.data);
     } catch (err) {
       alert(err);
@@ -31,19 +30,19 @@ function Keys() {
       </>
     );
   } else {
-    const all = data.allKeys.map(function(key) {
-      return(
-      <KeyCard
-        key={key.number}
-        number={key.number}
-        state={key.state}
-        userId={key.userId}
-      />
-  )});
-    console.log(data.allKeys);
+    const all = data.allKeys.map(function (key) {
+      return (
+        <KeyCard
+          key={key.number}
+          number={key.number}
+          state={key.state}
+          userId={key.userId}
+        />
+      );
+    });
     return (
       <Container>
-        {all}
+        <Row className="align-items-center">{all}</Row>
         <KeyModal />
       </Container>
     );

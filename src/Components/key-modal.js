@@ -3,11 +3,26 @@ import { Row, Col, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import { instance } from "../Api/api";
 
 function KeyModal() {
   const [show, setShow] = useState(false);
+  const [number, setNumber] = useState("");
 
-  const handleClose = () => setShow(false);
+
+  const handleClose = async (e) => {
+    setShow(false);
+    e.preventDefault();
+    try {
+        const response = await instance.post(
+          "api/key/create",
+          JSON.stringify({ number })
+        );
+      } catch (err) {
+        alert(err);
+      }
+  };
+
   const handleShow = () => setShow(true);
 
   return (
@@ -41,7 +56,10 @@ function KeyModal() {
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Аудитория</Form.Label>
-                <Form.Control />
+                <Form.Control
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
               </Form.Group>
             </Form>
           </Row>

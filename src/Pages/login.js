@@ -16,6 +16,7 @@ function Login() {
         JSON.stringify({ email, password })
       ); 
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', response.data.user);
       navigate('/');
     } catch (err) {
       alert(e.response.data.message);

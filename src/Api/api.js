@@ -1,4 +1,4 @@
-import getTokenFromLocalStorage from "../Helpers/localStorage-heper";
+import getTokenFromLocalStorage from "../Helpers/localStorage-helper";
 import axios from "axios";
 
 //const headerAuth = "Bearer" + getTokenFromLocalStorage();

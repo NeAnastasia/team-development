@@ -8,7 +8,7 @@ export const useRoutes = () => {
 
     return (
       <Routes>
-        <Route path="/" element={<Keys/>}/>
+        <Route path="/keys" element={<Keys/>}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/registration" element={<Registration/>} />
       </Routes>

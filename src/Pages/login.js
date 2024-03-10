@@ -1,29 +1,26 @@
-import { Card, Container, Form, Button } from "react-bootstrap";
-import { useState, useContext } from "react";
-import AuthContext from "../_Constants/Context/AuthContext";
+import { Card, Container, Form, Button, Alert } from "react-bootstrap";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../Api/api";
 
 function Login() {
-  const setAuth = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [IsLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await instance.post("auth/login", JSON.stringify({email, password}))
-      console.log(response.data);
+      const response = await instance.post(
+        "auth/login",
+        JSON.stringify({ email, password })
+      ); 
+      localStorage.setItem('token', response.data.token);
+      navigate('/');
+    } catch (err) {
+      alert(e.response.data.message);
     }
-    catch (err) {
-      if (!err.response) {
-          console.log("wtf")
-      }
-      else {
-        console.log("AAAAAAAAAA")
-      }
-    }
-  }
+  };
 
   return (
     <Container>
@@ -49,7 +46,9 @@ function Login() {
             </Form.Group>
           </Card.Body>
           <Card.Footer className="d-flex justify-content-end">
-            <Button type="submit" onClick={handleSubmit}>Войти</Button>
+            <Button type="submit" onClick={handleSubmit}>
+              Войти
+            </Button>
           </Card.Footer>
         </Form>
       </Card>

@@ -7,10 +7,11 @@ import { instance } from "../Api/api";
 
 function KeyModal() {
   const [show, setShow] = useState(false);
+  const [close, setClose] = useState(false);
   const [number, setNumber] = useState("");
 
 
-  const handleClose = async (e) => {
+  const handleCloseApi = async (e) => {
     setShow(false);
     e.preventDefault();
     try {
@@ -24,6 +25,7 @@ function KeyModal() {
   };
 
   const handleShow = () => setShow(true);
+  const handleClose = () => setClose(true);
 
   return (
     <>
@@ -65,7 +67,7 @@ function KeyModal() {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleCloseApi}>
             Создать
           </Button>
         </Modal.Footer>

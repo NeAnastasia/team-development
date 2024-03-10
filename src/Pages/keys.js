@@ -24,10 +24,10 @@ function Keys() {
 
   if (data.length === 0) {
     return (
-      <>
+      <Container>
         <Alert className="alert-primary mt-3">Нет ключей</Alert>
         <KeyModal />
-      </>
+      </Container>
     );
   } else {
     const all = data.allKeys.map(function (key) {

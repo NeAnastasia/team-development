@@ -1,10 +1,12 @@
 import { Card, Container, Form, Button } from "react-bootstrap";
 import { useState } from "react";
+import { registration } from "../Api/Actions/auth";
 
 function Registration() {
   const [Nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   return (
     <Container>
@@ -45,7 +47,7 @@ function Registration() {
             </Form.Group>
           </Card.Body>
           <Card.Footer className="d-flex justify-content-end">
-            <Button>Зарегестрироваться</Button>
+            <Button onClick={() => registration(Nickname, email, password)}>Зарегестрироваться</Button>
           </Card.Footer>
         </Form>
       </Card>

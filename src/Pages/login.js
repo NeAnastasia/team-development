@@ -1,9 +1,29 @@
 import { Card, Container, Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../_Constants/Context/AuthContext";
+import { instance } from "../Api/api";
+
 function Login() {
+  const setAuth = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [IsLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await instance.post("auth/login", JSON.stringify({email, password}))
+      console.log(response.data);
+    }
+    catch (err) {
+      if (!err.response) {
+          console.log("wtf")
+      }
+      else {
+        console.log("AAAAAAAAAA")
+      }
+    }
+  }
 
   return (
     <Container>
@@ -29,7 +49,7 @@ function Login() {
             </Form.Group>
           </Card.Body>
           <Card.Footer className="d-flex justify-content-end">
-            <Button type="submit">Войти</Button>
+            <Button type="submit" onClick={handleSubmit}>Войти</Button>
           </Card.Footer>
         </Form>
       </Card>

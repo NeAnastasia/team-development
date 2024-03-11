@@ -1,5 +1,5 @@
 import { Card, Row, Col, Form } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Checked from "./checkers";
 
 function UserCard({ userName, userEmail, roles }) {
@@ -7,6 +7,7 @@ function UserCard({ userName, userEmail, roles }) {
   const [checkTeacher, setCheckTeacher] = useState(false);
   const [checkDeanery, setCheckDeanery] = useState(false);
 
+  useEffect(() => {
   if (roles.length != 0) {
     for (let i = 0; i < roles.length; i++) {
       if (roles[i] === 'Teacher') {
@@ -19,7 +20,7 @@ function UserCard({ userName, userEmail, roles }) {
         setCheckDeanery(true);
       }
     }
-  }
+  }}, []);
 
   return (
     <Col xs={6}>

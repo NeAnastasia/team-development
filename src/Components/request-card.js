@@ -28,7 +28,7 @@ function RequestCard({ name, keyId, date, periodId, id, state }) {
             <TimeAndDate periodId={periodId} date={date} />
           </Col>
           <Col>
-            <StatesModal requestId={id} state={state} />
+            <StatesModal id={id} state={state} />
           </Col>
         </Row>
       </Card.Body>

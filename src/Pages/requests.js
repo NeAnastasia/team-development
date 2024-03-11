@@ -41,6 +41,7 @@ function Requests() {
           owner={item.owner}
           isRepeated={item.isRepeated}
           state={item.state}
+          id = {item.id}
         />
       );
     });

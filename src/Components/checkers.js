@@ -5,7 +5,7 @@ function Checked({ checked, label, id, apiAdd, apiDelete, Email }) {
   const handlePost = async (e) => {
     e.preventDefault();
     try {
-      const response = await instance.post(apiAdd, Email);
+      const response = await instance.post(apiAdd, JSON.stringify({email:Email}));
     } catch (err) {
       alert(err);
     }
@@ -14,7 +14,7 @@ function Checked({ checked, label, id, apiAdd, apiDelete, Email }) {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const response = await instance.delete(apiDelete, Email);
+      const response = await instance.delete(apiDelete, JSON.stringify({data:{Email}}));
     } catch (err) {
       alert(err);
     }

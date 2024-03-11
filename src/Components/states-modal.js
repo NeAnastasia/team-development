@@ -9,7 +9,7 @@ function StatesModal({ id, state }) {
   } else if (state === 2) {
     return <Alert className="alert-danger">Заявка отклонена</Alert>;
   } else {
-    return<Alert className="alert-info">Архив</Alert>;
+    return <Alert className="alert-info">Архив</Alert>;
   }
 }
 

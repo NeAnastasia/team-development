@@ -41,13 +41,13 @@ function Navigation() {
             <Nav.Link className="text-white" href="/keys">
               Ключи
             </Nav.Link>
-            <Nav.Link className="text-white" href="/keys">
+            <Nav.Link className="text-white" href="/users">
               Пользователи
             </Nav.Link>
-            <Nav.Link className="text-white" href="/keys">
+            <Nav.Link className="text-white" href="/requests">
               Заявки
             </Nav.Link>
-            <Nav.Link className="text-white" href="/keys">
+            <Nav.Link className="text-white" href="/profile">
               Профиль
             </Nav.Link>
             <Nav.Link className="text-white" href="/" onClick={handleSubmit}>

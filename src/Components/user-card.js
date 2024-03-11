@@ -1,21 +1,26 @@
 import { Card, Row, Col, Form } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Checked from "./checkers";
 
 function UserCard({ userName, userEmail, roles }) {
   const [checkStudent, setCheckStudent] = useState(false);
   const [checkTeacher, setCheckTeacher] = useState(false);
+  const [checkDeanery, setCheckDeanery] = useState(false);
 
+  useEffect(() => {
   if (roles.length != 0) {
-    for (let i; i < roles.length; i++) {
-      if (roles[i] == "Teacher") {
+    for (let i = 0; i < roles.length; i++) {
+      if (roles[i] === 'Teacher') {
         setCheckTeacher(true);
-      }
-      if (roles[i] == "Student") {
+      } else
+      if (roles[i] === 'Student') {
         setCheckStudent(true);
+      } else
+      if (roles[i] === 'Deanery') {
+        setCheckDeanery(true);
       }
     }
-  }
+  }}, []);
 
   return (
     <Col xs={6}>
@@ -48,6 +53,16 @@ function UserCard({ userName, userEmail, roles }) {
                     Email={userEmail}
                     apiAdd="api/role/add/teacher"
                     apiDelete="api/role/remove/teacher"
+                  />
+                </Row>
+                <Row>
+                  <Checked
+                    label="Деканат"
+                    id="Deanery"
+                    checked={checkDeanery}
+                    Email={userEmail}
+                    apiAdd="api/role/add/deanery"
+                    apiDelete="api/role/remove/deanery"
                   />
                 </Row>
               </Form>

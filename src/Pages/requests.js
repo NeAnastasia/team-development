@@ -9,30 +9,8 @@ function Requests() {
 
   const handleGet = async () => {
     try {
-      //const response = await instance.get("/requests");
-      //setData(response.data);
-      setData({
-        id: 1,
-        name: "Название",
-        description: "Lalala",
-        date: "24.05.2024",
-        periodId: "2",
-        keyId: "254",
-        owner: "1ca-f15863",
-        isRepeated: true,
-        weekday: "",
-      },
-      {
-        id: 1,
-        name: "Название",
-        description: "Lalala",
-        date: "24.05.2024",
-        periodId: "2",
-        keyId: "254",
-        owner: "1ca-f15863",
-        isRepeated: true,
-        weekday: "",
-      });
+      const response = await instance.get("api/applications");
+      setData(response.data);
     } catch (err) {
       alert(err);
     }
@@ -45,18 +23,32 @@ function Requests() {
   if (data.length == 0) {
     return (
       <Container>
-        <div class="alert alert-primary mt-3 text-center" role="alert">
+        <div className="alert alert-primary mt-3 text-center" role="alert">
           Нет заявок
         </div>
       </Container>
     );
   } else {
+    const all = data.applications.map(function (item) {
+      return (
+        <RequestModal
+          key={item.id}
+          name={item.name}
+          keyId={item.keyId}
+          description={item.description}
+          date={item.date}
+          periodId={item.periodId}
+          owner={item.owner}
+          isRepeated={item.isRepeated}
+          state={item.state}
+          id = {item.id}
+        />
+      );
+    });
     return (
       <Container>
         <Row>
-          <Col xs={6}>
-            <RequestCard name={data.name} keyId={data.keyId}/>
-          </Col>
+          {all}
         </Row>
       </Container>
     );

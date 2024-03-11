@@ -4,11 +4,8 @@ import TimeAndDate from "./time-and-date";
 function RequestCard({
   name,
   keyId,
-  description,
   date,
-  periodId,
-  owner,
-  isRepeated,
+  periodId
 }) {
   return (
     <Card className="mt-3">

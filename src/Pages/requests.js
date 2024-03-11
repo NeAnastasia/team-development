@@ -11,28 +11,30 @@ function Requests() {
     try {
       //const response = await instance.get("/requests");
       //setData(response.data);
-      setData({
-        id: 1,
-        name: "Название",
-        description: "Lalala",
-        date: "24.05.2024",
-        periodId: "2",
-        keyId: "254",
-        owner: "1ca-f15863",
-        isRepeated: true,
-        weekday: "",
-      },
-      {
-        id: 1,
-        name: "Название",
-        description: "Lalala",
-        date: "24.05.2024",
-        periodId: "2",
-        keyId: "254",
-        owner: "1ca-f15863",
-        isRepeated: true,
-        weekday: "",
-      });
+      setData(
+        {
+          id: 1,
+          name: "Название",
+          description: "Lalala",
+          date: "24.05.2024",
+          periodId: "2",
+          keyId: "254",
+          owner: "1ca-f15863",
+          isRepeated: true,
+          weekday: "",
+        },
+        {
+          id: 2,
+          name: "Название",
+          description: "Lalala",
+          date: "24.05.2024",
+          periodId: "2",
+          keyId: "254",
+          owner: "1ca-f15863",
+          isRepeated: true,
+          weekday: "",
+        }
+      );
     } catch (err) {
       alert(err);
     }
@@ -51,12 +53,24 @@ function Requests() {
       </Container>
     );
   } else {
+    const all = data.users.map(function (item) {
+      return (
+        <RequestModal
+          key={id}
+          name={item.name}
+          keyId={item.keyId}
+          description={item.description}
+          date={date}
+          periodId={periodId}
+          owner={owner}
+          isRepeated={isRepeated}
+        />
+      );
+    });
     return (
       <Container>
         <Row>
-          <Col xs={6}>
-            <RequestCard name={data.name} keyId={data.keyId}/>
-          </Col>
+          {all}
         </Row>
       </Container>
     );

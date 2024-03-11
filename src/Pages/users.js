@@ -32,6 +32,7 @@ function Users() {
           key={item.userId}
           userName={item.userName}
           userEmail={item.userEmail}
+          roles={item.roles}
         />
       );
     });

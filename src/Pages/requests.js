@@ -9,9 +9,20 @@ function Requests() {
 
   const handleGet = async () => {
     try {
-      const response = await instance.get("/requests");
+      //const response = await instance.get("/requests");
       //setData(response.data);
       setData({
+        id: 1,
+        name: "Название",
+        description: "Lalala",
+        date: "24.05.2024",
+        periodId: "2",
+        keyId: "254",
+        owner: "1ca-f15863",
+        isRepeated: true,
+        weekday: "",
+      },
+      {
         id: 1,
         name: "Название",
         description: "Lalala",

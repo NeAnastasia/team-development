@@ -11,7 +11,7 @@ function TimeAndDate({periodId, date}) {
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" /></svg>
                 </Col>
                 <Col>
-                    {periodId}
+                    {periodId} пара
                 </Col>
             </Row>
             <Row className="text-primary">

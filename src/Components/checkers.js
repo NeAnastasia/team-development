@@ -1,8 +1,7 @@
-import { Card, Row, Col, Form } from "react-bootstrap";
-import { useState } from "react";
+import {    Form } from "react-bootstrap";
 import { instance } from "../Api/api";
 
-function Checked({ checked, lable, id, apiAdd, apiDelete, Email }) {
+function Checked({ checked, label, id, apiAdd, apiDelete, Email }) {
   const handlePost = async (e) => {
     e.preventDefault();
     try {
@@ -22,9 +21,9 @@ function Checked({ checked, lable, id, apiAdd, apiDelete, Email }) {
   };
 
   if (checked) {
-    return <Form.Check label={lable} id={id} checked onChange={handleDelete} />;
+    return <Form.Check label={label} id={id} checked onClick={handleDelete} />;
   } else {
-    <Form.Check label={lable} id={id} onChange={handlePost} />;
+    return <Form.Check label={label} id={id} onClick={handlePost} />;
   }
 }
 

@@ -4,8 +4,12 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import TimeAndDate from "./time-and-date";
 import RequestCard from "./request-card";
+import aprRejBtn from "./bth";
+import { instance } from "../Api/api";
+import StatesModal from "./states-modal";
 
 function RequestModal({
+  id,
   name,
   keyId,
   description,
@@ -13,6 +17,7 @@ function RequestModal({
   periodId,
   owner,
   isRepeated,
+  state,
 }) {
   const [show, setShow] = useState(false);
 
@@ -21,15 +26,18 @@ function RequestModal({
 
   return (
     <>
-      <div onClick={handleShow}>
-        <RequestCard
-          name={name}
-          keyId={keyId}
-          date={date}
-          periodId={periodId}
-        />
-      </div>
-
+      <Col xs={6}>
+        <div onClick={handleShow}>
+          <RequestCard
+            name={name}
+            keyId={keyId}
+            date={date}
+            periodId={periodId}
+            id={id}
+            state = {state}
+          />
+        </div>
+      </Col>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <Row>
@@ -52,7 +60,7 @@ function RequestModal({
             <Row className="ms-2">{owner}</Row>
             <Row>
               <Col xs={6}>
-                <div class="alert alert-primary mt-3 ms-2 text-center">
+                <div className="alert alert-primary mt-3 ms-2 text-center">
                   Студент
                 </div>
               </Col>
@@ -60,12 +68,12 @@ function RequestModal({
             <Row className="ms-2">Аудитория</Row>
             <Row>
               <Col xs={6}>
-                <div class="alert alert-primary mt-3 ms-2 text-center">
+                <div className="alert alert-primary mt-3 ms-2 text-center">
                   {keyId}
                 </div>
               </Col>
               <Col className="align-self-center">
-                <TimeAndDate />
+                <TimeAndDate periodId={periodId} date={date} />
               </Col>
             </Row>
             <Row className="ms-2">Название</Row>
@@ -83,12 +91,7 @@ function RequestModal({
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
-            Одобрить
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
-            Отклонить
-          </Button>
+          <StatesModal requestId={id} state={state} />
         </Modal.Footer>
       </Modal>
     </>

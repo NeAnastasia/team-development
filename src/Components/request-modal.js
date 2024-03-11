@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import TimeAndDate from "./time-and-date";
 import RequestCard from "./request-card";
-import aprRejBtn from "./bth";
 import { instance } from "../Api/api";
 import StatesModal from "./states-modal";
 
@@ -24,6 +23,21 @@ function RequestModal({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [data, setData] = useState([]);
+
+  const handleGet = async () => {
+    try {
+      const response = await instance.get("user/" + owner);
+      setData(response.data);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  useEffect(() => {
+    handleGet();
+  }, []);
+
   return (
     <>
       <Col xs={6}>
@@ -34,7 +48,7 @@ function RequestModal({
             date={date}
             periodId={periodId}
             id={id}
-            state = {state}
+            state={state}
           />
         </div>
       </Col>
@@ -57,13 +71,11 @@ function RequestModal({
             </Col>
           </Row>
           <Row>
-            <Row className="ms-2">{owner}</Row>
+            <Row className="ms-2">{data.userName}</Row>
             <Row>
-              <Col xs={6}>
                 <div className="alert alert-primary mt-3 ms-2 text-center">
-                  Студент
+                  {data.roles}
                 </div>
-              </Col>
             </Row>
             <Row className="ms-2">Аудитория</Row>
             <Row>
